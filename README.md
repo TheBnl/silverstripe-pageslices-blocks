@@ -10,6 +10,6 @@ Install the module trough composer
 
 To add blocks to your page simply create a new Blocks slice and add your blocks into it. 
 
-###Maintainers
+### Maintainers
 
 [Bram de Leeuw](http://www.twitter.com/bramdeleeuw)
