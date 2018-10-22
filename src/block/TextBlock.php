@@ -9,7 +9,7 @@ namespace Broarm\PageSlices\Block;
  */
 class TextBlock extends Block
 {
-    private static $table_name = 'TextBlock';
+    private static $table_name = 'PageSlicesTextBlock';
 
     private static $db = [
         'Content' => 'HTMLText'

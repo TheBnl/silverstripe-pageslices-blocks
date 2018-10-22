@@ -14,7 +14,7 @@ use SilverStripe\Assets\Image;
  */
 class ImageBlock extends Block
 {
-    private static $table_name = 'ImageBlock';
+    private static $table_name = 'PageSlicesImageBlock';
 
     private static $db = [
         'Caption' => 'Varchar'

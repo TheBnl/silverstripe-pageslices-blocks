@@ -22,7 +22,7 @@ use SilverStripe\Versioned\Versioned;
  */
 class Block extends DataObject
 {
-    private static $table_name = 'BlockSliceBlock';
+    private static $table_name = 'PageSlicesBlock';
 
     private static $db = [
         'Title' => 'Varchar(255)'
