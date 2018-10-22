@@ -32,7 +32,7 @@ class BlockSlice extends PageSlice
         ]
     ];
 
-    private static $slice_image = 'bramdeleeuw/silverstripe-pageslices_blocks:client/images/BlockSlice.png';
+    private static $slice_image = 'bramdeleeuw/silverstripe-pageslices-blocks:client/images/BlockSlice.png';
 
     public function getCMSFields()
     {

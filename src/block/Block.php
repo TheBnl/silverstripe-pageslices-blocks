@@ -6,6 +6,7 @@ use Exception;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleResourceLoader;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
@@ -106,12 +107,12 @@ class Block extends DataObject
      *
      * @return string
      */
-    public function getSliceImage()
+    public function getBlockImage()
     {
-        $image = self::config()->get('slice_image');
+        $image = ModuleResourceLoader::resourceURL(self::config()->get('block_image'));
         return LiteralField::create(
-            'SliceImage',
-            "<img src='$image' title='{$this->getBlockType()}' alt='{$this->getBlockType()}' width='125'>"
+            'BlockImage',
+            "<img src='$image' title='{$this->getBlockType()}' alt='{$this->getBlockType()}' width='50'>"
         );
     }
 
