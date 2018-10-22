@@ -4,6 +4,7 @@ namespace Broarm\PageSlices;
 
 use Broarm\PageSlices\Block\Block;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\ManyManyList;
 
 /**
@@ -37,9 +38,17 @@ class BlockSlice extends PageSlice
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->addFieldsToTab('Root.Main', [
-            GridField::create('Blocks', 'Blocks', $this->BlockSliceBlock(), BlocksGridFieldConfig::create())
-        ]);
+        if ($this->exists()) {
+            $fields->addFieldsToTab('Root.Main', [
+                GridField::create('Blocks', 'Blocks', $this->BlockSliceBlock(), BlocksGridFieldConfig::create())
+            ]);
+        } else {
+            $message = _t(__CLASS__ . 'SaveNeeded', 'You need to save before you can add blocks');
+            $fields->insertBefore(
+                'Title',
+                LiteralField::create('Warning', "<p class='message notice'>{$message}</p>")
+            );
+        }
 
         return $fields;
     }
