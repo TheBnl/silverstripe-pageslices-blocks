@@ -24,5 +24,9 @@ class ImageBlock extends Block
         'Image' => Image::class
     ];
 
+    private static $owns = [
+        'Image'
+    ];
+
     private static $block_image = 'bramdeleeuw/silverstripe-pageslices-blocks:client/images/ImageBlock.png';
 }
