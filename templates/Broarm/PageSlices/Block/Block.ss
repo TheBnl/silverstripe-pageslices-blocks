@@ -1,0 +1,1 @@
+<%-- Base block, should not be rendered --%>
