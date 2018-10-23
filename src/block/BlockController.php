@@ -2,6 +2,7 @@
 
 namespace Broarm\PageSlices\Block;
 
+use Broarm\PageSlices\BlockSliceController;
 use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -24,6 +25,11 @@ class BlockController extends Controller implements Flushable
      * @var Block
      */
     protected $block;
+
+    /**
+     * @var BlockSliceController
+     */
+    protected $slice;
 
     /**
      * Overwrite this setting on your subclass
@@ -100,6 +106,22 @@ class BlockController extends Controller implements Flushable
     public function getBlock()
     {
         return $this->block;
+    }
+
+    /**
+     * @return BlockSliceController
+     */
+    public function getSlice()
+    {
+        return $this->slice;
+    }
+
+    /**
+     * @param BlockSliceController $slice
+     */
+    public function setSlice($slice)
+    {
+        $this->slice = $slice;
     }
 
     /**

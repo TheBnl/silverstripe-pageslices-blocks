@@ -35,6 +35,7 @@ class BlockSliceController extends PageSliceController
             /** @var Block $block */
             foreach ($blocks as $block) {
                 $controller = $block->getController();
+                $controller->setSlice($this);
                 $controller->init();
                 $controllers->push($controller);
             }
