@@ -1,27 +1,27 @@
 nl:
   BlockSlice:
-    php.Broarm\PageSlices\BlockSliceSaveNeeded: 'You need to save before you can add blocks'
+    php.Broarm\PageSlices\BlockSliceSaveNeeded: 'De block slice moet eerst opgeslagen worden voordat er blokken kunnen worden toegevoegd'
   Broarm\PageSlices\BlockSlice:
-    PLURALNAME: 'Block Slices'
+    PLURALNAME: 'Blokken slices'
     PLURALS:
-      one: 'A Block Slice'
-      other: '{count} Block Slices'
-    SINGULARNAME: 'Block Slice'
+      one: 'Een Bloken slice'
+      other: '{count} Blokken slices'
+    SINGULARNAME: 'Blokken slice'
   Broarm\PageSlices\Block\Block:
-    PLURALNAME: Blocks
+    PLURALNAME: Blokken
     PLURALS:
-      one: 'A Block'
-      other: '{count} Blocks'
+      one: 'Een Blok'
+      other: '{count} Blokken'
     SINGULARNAME: Block
   Broarm\PageSlices\Block\ImageBlock:
-    PLURALNAME: 'Image Blocks'
+    PLURALNAME: 'Afbeelding blokken'
     PLURALS:
-      one: 'An Image Block'
-      other: '{count} Image Blocks'
-    SINGULARNAME: 'Image Block'
+      one: 'Een afbeelding blok'
+      other: '{count} afbeelding blokken'
+    SINGULARNAME: 'Afbeelding blok'
   Broarm\PageSlices\Block\TextBlock:
-    PLURALNAME: 'Text Blocks'
+    PLURALNAME: 'Tekst blok'
     PLURALS:
-      one: 'A Text Block'
-      other: '{count} Text Blocks'
-    SINGULARNAME: 'Text Block'
+      one: 'Een tekst blok'
+      other: '{count} Tekst blokken'
+    SINGULARNAME: 'Tekst blok'

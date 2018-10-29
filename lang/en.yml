@@ -1,0 +1,27 @@
+en:
+  BlockSlice:
+    php.Broarm\PageSlices\BlockSliceSaveNeeded: 'You need to save before you can add blocks'
+  Broarm\PageSlices\BlockSlice:
+    PLURALNAME: 'Block Slices'
+    PLURALS:
+      one: 'A Block Slice'
+      other: '{count} Block Slices'
+    SINGULARNAME: 'Block Slice'
+  Broarm\PageSlices\Block\Block:
+    PLURALNAME: Blocks
+    PLURALS:
+      one: 'A Block'
+      other: '{count} Blocks'
+    SINGULARNAME: Block
+  Broarm\PageSlices\Block\ImageBlock:
+    PLURALNAME: 'Image Blocks'
+    PLURALS:
+      one: 'An Image Block'
+      other: '{count} Image Blocks'
+    SINGULARNAME: 'Image Block'
+  Broarm\PageSlices\Block\TextBlock:
+    PLURALNAME: 'Text Blocks'
+    PLURALS:
+      one: 'A Text Block'
+      other: '{count} Text Blocks'
+    SINGULARNAME: 'Text Block'
