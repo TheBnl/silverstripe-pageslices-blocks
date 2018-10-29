@@ -28,7 +28,7 @@ class BlockSliceController extends PageSliceController
     public function getBlocks()
     {
         $controllers = ArrayList::create();
-        $blocks = $this->BlockSliceBlock();
+        $blocks = $this->BlockSliceBlock()->Sort('Sort ASC');
         
         
         if ($blocks) {

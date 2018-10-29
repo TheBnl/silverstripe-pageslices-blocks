@@ -3,7 +3,7 @@
 namespace Broarm\PageSlices;
 
 use Broarm\PageSlices\Block\Block;
-use Heyday\GridFieldVersionedOrderableRows\GridFieldVersionedOrderableRows;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\GridField\GridFieldConfig;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
@@ -42,7 +42,7 @@ class BlocksGridFieldConfig extends GridFieldConfig
         $this->addComponent(new GridFieldTitleHeader());
         $this->addComponent(new GridFieldDataColumns());
         $this->addComponent(new VersionedGridFieldState());
-        $this->addComponent(new GridFieldVersionedOrderableRows($sortField));
+        $this->addComponent(new GridFieldOrderableRows($sortField));
         $this->addComponent(new GridFieldDetailForm());
         $this->addComponent(new GridFieldEditButton());
         $this->addComponent($multiClassComponent = new GridFieldAddNewMultiClass());
