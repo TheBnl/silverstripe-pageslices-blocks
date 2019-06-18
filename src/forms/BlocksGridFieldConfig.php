@@ -3,6 +3,9 @@
 namespace Broarm\PageSlices;
 
 use Broarm\PageSlices\Block\Block;
+use Heyday\GridFieldVersionedOrderableRows\GridFieldVersionedOrderableRows;
+use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\GridField\GridFieldConfig;
@@ -20,9 +23,8 @@ use Symbiote\GridFieldExtensions\GridFieldTitleHeader;
  *
  * @package Broarm\PageSlices
  */
-class BlocksGridFieldConfig extends GridFieldConfig
+class BlocksGridFieldConfig extends GridFieldConfig_RecordEditor
 {
-
     /**
      * BlocksGridFieldConfig constructor.
      *
@@ -30,19 +32,12 @@ class BlocksGridFieldConfig extends GridFieldConfig
      * @param int    $itemsPerPage
      * @param string $sortField
      */
-    public function __construct($availableClasses = array(), $itemsPerPage = 999, $sortField = 'Sort')
+    public function __construct($availableClasses = array(), $itemsPerPage = null, $sortField = 'Sort')
     {
-        parent::__construct();
-        $this->addComponent(new GridFieldTitleHeader());
-        $this->addComponent(new GridFieldDataColumns());
-        $this->addComponent(new VersionedGridFieldState());
-        $this->addComponent(new GridFieldOrderableRows($sortField));
-        $this->addComponent(new GridFieldDetailForm());
-        $this->addComponent(new GridFieldEditButton());
-        $this->addComponent($multiClassComponent = new GridFieldAddNewMultiClass());
-        $this->addComponent($pagination = new GridFieldPaginator($itemsPerPage));
-
-        $multiClassComponent->setClasses(Block::getAvailableBlocks());
-        $pagination->setThrowExceptionOnBadDataType(false);
+        parent::__construct($itemsPerPage = null);
+        $this->removeComponentsByType(new GridFieldAddNewButton());
+        $this->addComponent(new GridFieldVersionedOrderableRows($sortField));
+        $this->addComponent($multiClassComponent = new GridFieldAddNewMultiClass('buttons-before-left'));
+        $multiClassComponent->setClasses($availableClasses);
     }
 }
