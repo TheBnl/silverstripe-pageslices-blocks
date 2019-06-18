@@ -7,6 +7,7 @@ use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Core\Manifest\ModuleResourceLoader;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
@@ -35,6 +36,10 @@ class Block extends DataObject
         'Title' => 'Title'
     ];
 
+    private static $searchable_fields = [
+        'Title'
+    ];
+
     private static $translate = [
         'Title'
     ];
@@ -56,7 +61,24 @@ class Block extends DataObject
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
+        if ($this->ClassName === Block::class) {
+            $fields->addFieldsToTab('Root.Main', [
+                DropdownField::create('ClassName', _t(__CLASS__ . 'ClassName', 'Block type'), self::getAvailableBlocks())
+                    ->setEmptyString(_t(__CLASS__ . 'ClassNameEmpty', 'Select block type'))
+            ]);
+        }
+
         return $fields;
+    }
+
+    public function validate()
+    {
+        $validation = parent::validate();
+        if ($validation->isValid() && $this->ClassName === Block::class) {
+            $validation->addError('Select a proper block type');
+        }
+
+        return $validation;
     }
 
     /**
@@ -159,5 +181,21 @@ class Block extends DataObject
         $fields = parent::getBetterButtonsUtils();
         $fields->removeByName('action_doNew');
         return $fields;
+    }
+
+    /**
+     * Get the available block types
+     *
+     * @return array
+     * @throws \ReflectionException
+     */
+    public static function getAvailableBlocks()
+    {
+        $availableClasses = ClassInfo::subclassesFor(Block::class);
+        array_shift($availableClasses);
+
+        return array_map(function ($class) {
+            return $class::singleton()->getBlockType();
+        }, $availableClasses);
     }
 }

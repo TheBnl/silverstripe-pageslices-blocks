@@ -33,12 +33,6 @@ class BlocksGridFieldConfig extends GridFieldConfig
     public function __construct($availableClasses = array(), $itemsPerPage = 999, $sortField = 'Sort')
     {
         parent::__construct();
-        
-        if (empty($availableClasses)) {
-            $availableClasses = ClassInfo::subclassesFor(Block::class);
-            array_shift($availableClasses);
-        }
-
         $this->addComponent(new GridFieldTitleHeader());
         $this->addComponent(new GridFieldDataColumns());
         $this->addComponent(new VersionedGridFieldState());
@@ -48,24 +42,7 @@ class BlocksGridFieldConfig extends GridFieldConfig
         $this->addComponent($multiClassComponent = new GridFieldAddNewMultiClass());
         $this->addComponent($pagination = new GridFieldPaginator($itemsPerPage));
 
-        $multiClassComponent->setClasses(self::translateAvailableClasses($availableClasses));
+        $multiClassComponent->setClasses(Block::getAvailableBlocks());
         $pagination->setThrowExceptionOnBadDataType(false);
-    }
-
-
-    /**
-     * Translate the given array for a proper SINGULARNAME.
-     *
-     * @param $classes
-     *
-     * @return array
-     */
-    private static function translateAvailableClasses($classes)
-    {
-        $out = array();
-        foreach ($classes as $class) {
-            $out[$class] = $class::singleton()->getBlockType();
-        }
-        return $out;
     }
 }
