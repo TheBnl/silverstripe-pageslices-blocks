@@ -196,6 +196,6 @@ class Block extends DataObject
 
         return array_map(function ($class) {
             return $class::singleton()->getBlockType();
-        }, $availableClasses);
+        }, array_combine($availableClasses, $availableClasses));
     }
 }
