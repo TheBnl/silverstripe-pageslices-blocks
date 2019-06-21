@@ -34,6 +34,10 @@ class BlocksGridFieldConfig extends GridFieldConfig_RecordEditor
      */
     public function __construct($availableClasses = array(), $itemsPerPage = null, $sortField = 'Sort')
     {
+        if (empty($availableClasses)) {
+            $availableClasses = Block::getAvailableBlocks();
+        }
+
         parent::__construct($itemsPerPage = null);
         $this->removeComponentsByType(new GridFieldAddNewButton());
         $this->addComponent(new GridFieldVersionedOrderableRows($sortField));
