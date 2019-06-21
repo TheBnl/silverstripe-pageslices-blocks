@@ -38,6 +38,8 @@ class BlockSlice extends PageSlice
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
+        $fields->removeByName('BlockSliceBlock');
+
         if ($this->exists()) {
             $fields->addFieldsToTab('Root.Main', [
                 GridField::create('Blocks', 'Blocks', $this->BlockSliceBlock(), BlocksGridFieldConfig::create())
