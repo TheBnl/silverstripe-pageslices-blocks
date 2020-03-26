@@ -40,7 +40,7 @@ class BlocksGridFieldConfig extends GridFieldConfig_RecordEditor
 
         parent::__construct($itemsPerPage = null);
         $this->removeComponentsByType(new GridFieldAddNewButton());
-        $this->addComponent(new GridFieldVersionedOrderableRows($sortField));
+        $this->addComponent(new GridFieldOrderableRows($sortField));
         $this->addComponent($multiClassComponent = new GridFieldAddNewMultiClass('buttons-before-left'));
         $multiClassComponent->setClasses($availableClasses);
     }
